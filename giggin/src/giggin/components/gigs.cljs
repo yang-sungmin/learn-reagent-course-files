@@ -1,17 +1,6 @@
 (ns giggin.components.gigs
   (:require [giggin.state :as state]))
 
-;
-; vals
-; map vs for
-; :keys in destructuring
-; (fn [] (swap! state/orders update id inc)
-; *ns*
-; (shadow.cljs.devtools.api/nrepl-select :app)
-; (ns giggin.state)
-; @giggin.state/orders
-;
-
 (defn gigs
   []
   [:main

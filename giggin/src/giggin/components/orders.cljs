@@ -1,11 +1,11 @@
 (ns giggin.components.orders
       (:require [giggin.state :as state]))
 
-;
-; (for [[id quant] @state/orders]) -> {:gig-11 2, :gig-07 2}]
-; (get-in @state/gigs [id :img]
-; (fn [] (swap! state/orders dissoc id))
-;
+(defn total
+  []
+  (->> @state/orders
+       (map (fn [[id quant]] (* quant (get-in @state/gigs [id :price]))))
+       (reduce +)))
 
 (defn orders
   []
@@ -24,4 +24,14 @@
          [:button.btn.btn--link.tooltip
           {:data-tooltip "Remove"
            :on-click (fn [] (swap! state/orders dissoc id))}
-          [:i.icon.icon--cross]]]])]]])
+          [:i.icon.icon--cross]]]])]
+    [:div.total
+     [:hr]
+     [:div.item
+      [:div.content "Total"]
+      [:div.action
+       [:div.price (total)]]
+      [:button.btn.btn--link.tooltip
+       {:data-tooltip "Remove all"
+        :on-click (fn [] (reset! state/orders {}))}
+       [:i.icon.icon--delete]]]]]])

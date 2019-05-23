@@ -1,11 +1,6 @@
 (ns giggin.state
   (:require [reagent.core :as r]))
 
-;
-; (def orders (r/atom {}))
-;
-
-
 (def orders (r/atom {}))
 
 (def gigs (r/atom {:gig-01 {:id :gig-01
