@@ -5,6 +5,10 @@
             [giggin.components.orders :refer [orders]]
             [giggin.components.footer :refer [footer]]))
 
+;;
+;; :require :refer
+;;
+
 (defn app
   []
   [:div.container
