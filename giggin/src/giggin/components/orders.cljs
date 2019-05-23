@@ -1,5 +1,5 @@
 (ns giggin.components.orders)
 
 (defn orders
-      []
-      [:orders "orders"])
+  []
+  [:orders "orders"])
