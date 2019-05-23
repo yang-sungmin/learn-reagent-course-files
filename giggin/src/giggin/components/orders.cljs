@@ -1,6 +1,7 @@
 (ns giggin.components.orders
       (:require [giggin.state :as state]
-                [giggin.helpers :refer [format-price]]))
+                [giggin.helpers :refer [format-price]]
+                [giggin.components.checkout-modal :refer [checkout-modal]]))
 
 (defn total
   []
@@ -33,7 +34,7 @@
                :on-click #(remove-from-order id)}
               [:i.icon.icon--cross]]]])]
         [:div.total
-         [:hr]햐
+         [:hr]
          [:div.item
           [:div.content "Total"]
           [:div.action
@@ -41,4 +42,5 @@
           [:button.btn.btn--link.tooltip
            {:data-tooltip "Remove all"
             :on-click #(remove-all-orders)}
-           [:i.icon.icon--delete]]]]])]))
+           [:i.icon.icon--delete]]]
+         [checkout-modal]]])]))
