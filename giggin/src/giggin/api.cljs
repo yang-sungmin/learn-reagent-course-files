@@ -1,8 +1,16 @@
 (ns giggin.api
-  (:require [ajax.core :refer [GET]]))
+  (:require [ajax.core :refer [GET]]
+            [giggin.state :as state]))
+
+(defn index-by
+      [key coll]
+      "Transform a coll to a map with given key"
+      (->> coll
+           (map (juxt key identity))
+           (into {})))
 
 (defn handler [response]
-      (.log js/console response))
+      (reset! state/gigs (index-by :id response)))
 
 (defn error-handler [{:keys [status status-text]}]
       (.log js/console (str "something bad happened: " status " " status-text)))
