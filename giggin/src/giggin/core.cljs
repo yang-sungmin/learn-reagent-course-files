@@ -3,18 +3,20 @@
             [giggin.components.header :refer [header]]
             [giggin.components.gigs :refer [gigs]]
             [giggin.components.orders :refer [orders]]
-            [giggin.components.footer :refer [footer]]))
+            [giggin.components.footer :refer [footer]]
+            [giggin.api :as api]))
 
 (defn app
-  []
-  [:div.container
-   [header]
-   [gigs]
-   [orders]
-   [footer]])
+      []
+      [:div.container
+       [header]
+       [gigs]
+       [orders]
+       [footer]])
 
 (defn ^:export main
-  []
-  (r/render
-    [app]
-    (.getElementById js/document "app")))
+      []
+      (api/fetch-gigs)
+      (r/render
+        [app]
+        (.getElementById js/document "app")))
